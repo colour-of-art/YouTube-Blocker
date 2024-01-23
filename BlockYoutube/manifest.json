@@ -1,19 +1,29 @@
 {
-    "manifest_version": 2,
-    "name": "Block YouTube",
-    "version": "1.0",
-    "description": "Blocks access to YouTube",
-    "permissions": [
+  "manifest_version": 2,
+  "name": "Toggle Block YouTube",
+  "version": "1.0",
+  "description": "Toggleable block for YouTube",
+  "permissions": [
       "webRequest",
       "webRequestBlocking",
       "storage",
       "<all_urls>"
-    ],
-    "background": {
+  ],
+  "background": {
       "scripts": ["background.js"],
       "persistent": true
-    },
-    "icons": {
+  },
+  "icons": {
       "48": "icon.png"
-    }
-  }
+  },
+  "browser_action": {
+      "default_icon": "icon.png",
+      "default_title": "Toggle Block YouTube"
+  },
+  "content_scripts": [
+      {
+          "matches": ["<all_urls>"],
+          "js": ["content.js"]
+      }
+  ]
+}
